@@ -27,6 +27,7 @@ export default function App() {
         const data = await fetchImages(query, page);
         setImages(prev => [...prev, ...data.results]);
       } catch (err) {
+        console.error(err);
         setError(true);
       } finally {
         setLoading(false);
@@ -69,6 +70,7 @@ export default function App() {
       {images.length > 0 && !loading && <LoadMoreBtn onClick={loadMore} />}
 
       <ImageModal image={selectedImage} isOpen={showModal} onClose={closeModal} />
+      
     </>
   );
 }
